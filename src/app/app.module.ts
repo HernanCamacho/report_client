@@ -1,20 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Components
-import { MapComponent } from './components/map/map.component';
+import { LocationComponent } from './components/location/location.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    LocationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyCDGm1FdbNfkn840pnZ_bmbSpDuPnyh8WY'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
