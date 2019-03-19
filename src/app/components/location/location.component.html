@@ -11,9 +11,6 @@
                         <strong>Incidencia: {{market.comments}}</strong>
                         <br>
                         <strong>Departamento: {{market.department_id}}</strong>
-                        <small></small>
-                        <small></small>
-                        <small></small>
                     </agm-info-window>
                 </agm-marker>
             </div>
@@ -22,13 +19,13 @@
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#waterModal">
 				    <i class="fas fa-tint"></i>
              </button>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#roadModal">
                     <i class="fas fa-road"></i>
             </button>
-            <button type="button" class="btn btn-success">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#lightModal">
                     <i class="fas fa-lightbulb"></i>
             </button>
-            <!-- Modal -->
+            <!-- Modal water -->
             <div class="modal fade" id="waterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -50,6 +47,62 @@
                                 </div>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <input type="submit" value="Report!" class="btn btn-success" [disabled]="!reportForm.form.valid" (click)="refresh()"/>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal road -->
+            <div class="modal fade" id="roadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir un nuevo Report</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #reportFormroad="ngForm" (ngSubmit)="onSubmit2(reportFormroad)">
+
+                                <div class="form-group col-lg-6">
+                                    <input type="file" accept="image/png, image/jpeg" name="evidence" #evidence="ngModel" [(ngModel)]="report.evidence" class="form-control-file" aria-describedby="evidenceHelp" (change)="fileChangeEvent($event)">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <textarea class="form-control" name="comments" #comments="ngModel" [(ngModel)]="report.comments" placeholder="Cuéntanos, ¿qué sucede?" cols="5" rows="3" required></textarea>
+                                    <small class="form-text text-muted" *ngIf="!comments.valid && comments.touched">Necesitamos conocer la situación para atenderla lo más pronto posible.</small>
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" value="Report!" class="btn btn-success" [disabled]="!reportFormroad.form.valid" (click)="refresh()"/>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal light -->
+            <div class="modal fade" id="lightModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Añadir un nuevo Report</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #reportFormlight="ngForm" (ngSubmit)="onSubmit3(reportFormlight)">
+
+                                <div class="form-group col-lg-6">
+                                    <input type="file" accept="image/png, image/jpeg" name="evidence" #evidence="ngModel" [(ngModel)]="report.evidence" class="form-control-file" aria-describedby="evidenceHelp" (change)="fileChangeEvent($event)">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <textarea class="form-control" name="comments" #comments="ngModel" [(ngModel)]="report.comments" placeholder="Cuéntanos, ¿qué sucede?" cols="5" rows="3" required></textarea>
+                                    <small class="form-text text-muted" *ngIf="!comments.valid && comments.touched">Necesitamos conocer la situación para atenderla lo más pronto posible.</small>
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" value="Report!" class="btn btn-success" [disabled]="!reportFormlight.form.valid" (click)="refresh()"/>
 
                             </form>
                         </div>

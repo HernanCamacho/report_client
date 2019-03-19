@@ -10,12 +10,16 @@ import { AppComponent } from './app.component';
 // Components
 import { LocationComponent } from './components/location/location.component';
 import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterEmplComponent } from './components/register-emp/registerEmp.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LocationComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    RegisterEmplComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ export class Report{
         public longitude: string,
         public evidence,
         public comments: string,
-        public department_id: number,
-        public user_id: number
+        public department_id: string,
+        public user_id: string
     ){}
 }

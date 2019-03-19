@@ -15,8 +15,8 @@ import { GLOBAL } from '../../services/GLOBAL';
 
 export class LocationComponent implements OnInit{
     public title: string;
-    public latitude: number;
-    public longitude: number;
+    public latitude;
+    public longitude;
     public report: Report;
     public url: string;
     public response: Report[];
@@ -80,14 +80,53 @@ export class LocationComponent implements OnInit{
         console.log('si entro');
         this.report.latitude = this.latitude;
         this.report.longitude = this.longitude;
-        this.report.department_id = 1;
-        this.report.user_id = 1;
+        this.report.department_id = '1';
+        this.report.user_id = '1';
         console.log(this.report.latitude);
         this._reportService.saveReport(this.report).subscribe(
             response =>{
                 if(response.id){
                     form.reset();
                     this.refresh();
+                    alert('Tu reporte ha sido enviado');
+                }
+            }, error =>{
+                console.log(<any>error);
+            }
+        );
+    }
+    onSubmit2(form){
+        console.log('si entro');
+        this.report.latitude = this.latitude;
+        this.report.longitude = this.longitude;
+        this.report.department_id = '2';
+        this.report.user_id = '1';
+        console.log(this.report.latitude);
+        this._reportService.saveReport(this.report).subscribe(
+            response =>{
+                if(response.id){
+                    form.reset();
+                    this.refresh();
+                    alert('Tu reporte ha sido enviado');
+                }
+            }, error =>{
+                console.log(<any>error);
+            }
+        );
+    }
+    onSubmit3(form){
+        console.log('si entro');
+        this.report.latitude = this.latitude;
+        this.report.longitude = this.longitude;
+        this.report.department_id = '3';
+        this.report.user_id = '1';
+        console.log(this.report.latitude);
+        this._reportService.saveReport(this.report).subscribe(
+            response =>{
+                if(response.id){
+                    form.reset();
+                    this.refresh();
+                    alert('Tu reporte ha sido enviado');
                 }
             }, error =>{
                 console.log(<any>error);
