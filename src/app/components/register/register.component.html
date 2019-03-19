@@ -1,0 +1,35 @@
+<div class="col-lg-10" style="margin-top: 80px;">
+    <div class="container">
+        <div class="col-lg-8">
+            <h3>{{title}}</h3>
+            <h5>{{welcome}}</h5>
+            <div class="alert alert-success" role="alert" *ngIf="success == 'success' " >
+		       <strong>Tu registro se ha completado con éxito.</strong> Ahora puedes <a [routerLink]="['/login']"> Iniciar Sesión</a>.
+	        </div>
+        	<div class="alert alert-danger" role="alert" *ngIf="success == 'fail' " >
+                <strong>Ha ocurrido un error, intentalo más tarde.</strong>
+        	</div>
+            <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        <input type="text" name="first_name" #first_name="ngModel" [(ngModel)]="user.first_name" class="form-control" aria-describedby="firstNameHelp" placeholder="Nombre" required>
+                        <small class="form-text text-muted" *ngIf="!first_name.valid && first_name.touched">Este campo es necesario para poder ingresar a la aplicación.</small>
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <input type="text" name="last_name" #last_name="ngModel" [(ngModel)]="user.last_name" class="form-control" aria-describedby="lastNameHelp" placeholder="Apellidos" required>
+                        <small class="form-text text-muted" *ngIf="!last_name.valid && last_name.touched">Este campo es necesario para poder ingresar a la aplicación.</small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" aria-describedby="emailHelp" placeholder="Correo electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                    <small class="form-text text-muted" *ngIf="!email.valid && email.touched">El correo electrónico no es válido, comprueba que este bien escrito.</small>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" aria-describedby="passwordHelp" placeholder="Contraseña" pattern="[a-z0-9._%+-]{8,16}$" required>
+                    <small class="form-text text-muted" *ngIf="!password.valid && password.touched">La contraseña debe contener entre 8 y 16 caracteres.</small>
+                </div>
+                <input type="submit" value="{{button}}" class="btn btn-success" [disabled]="!registerForm.form.valid"/>
+        </form>
+    </div>
+    </div>
+</div>
